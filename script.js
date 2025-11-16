@@ -38,7 +38,7 @@ const unxor = s => {
 let APP_TITLE, APP_SUBTITLE, TEACHERS, ASSESSMENTS;
 
 /* --------------------------------------------------------------
-   Load questions.json – robust, case-insensitive, safe
+   Load questions.json – robust & safe
    -------------------------------------------------------------- */
 async function loadQuestions() {
   try {
@@ -46,21 +46,13 @@ async function loadQuestions() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const json = await res.json();
 
-    // Normalize keys (case-insensitive fallback)
-    const get = (obj, ...keys) => {
-      for (const k of keys) if (obj[k] !== undefined) return obj[k];
-      return undefined;
-    };
+    APP_TITLE = json.APP_TITLE || "Assessment";
+    APP_SUBTITLE = json.APP_SUBTITLE || "";
+    TEACHERS = Array.isArray(json.TEACHERS) ? json.TEACHERS : [];
+    const raw = Array.isArray(json.ASSESSMENTS) ? json.ASSESSMENTS : [];
 
-    APP_TITLE = get(json, "APP_TITLE", "app_title", "title") || "Assessment";
-    APP_SUBTITLE = get(json, "APP_SUBTITLE", "app_subtitle", "subtitle") || "";
-    TEACHERS = Array.isArray(get(json, "TEACHERS", "teachers", "Teachers")) ? get(json, "TEACHERS", "teachers", "Teachers") : [];
-    const rawAssessments = Array.isArray(get(json, "ASSESSMENTS", "assessments", "Assessments")) ? get(json, "ASSESSMENTS", "assessments", "Assessments") : [];
-
-    if (rawAssessments.length === 0) throw new Error("No assessments found in questions.json");
-
-    ASSESSMENTS = rawAssessments
-      .filter(ass => ass && ass.id && Array.isArray(ass.questions))
+    ASSESSMENTS = raw
+      .filter(a => a && a.id && Array.isArray(a.questions))
       .map(ass => ({
         ...ass,
         questions: ass.questions
@@ -70,24 +62,20 @@ async function loadQuestions() {
             rubric: Array.isArray(q.rubric)
               ? q.rubric.map(r => ({
                   ...r,
- Crack: new RegExp(r.check || "", "i")
+                  check: new RegExp(r.check || "", "i")  // ← FIXED: "check", not "Crack"
                 }))
               : []
           }))
       }));
 
-    if (ASSESSMENTS.length === 0) throw new Error("No valid assessments after filtering");
-
-    console.log("Loaded assessments:", ASSESSMENTS.length);
+    if (ASSESSMENTS.length === 0) throw new Error("No valid assessments");
   } catch (err) {
-    console.error("Failed to load questions.json:", err);
-    document.body.innerHTML = `
-      <div style="text-align:center;padding:40px;color:#e74c3c;font-family:sans-serif;">
-        <h2>Failed to load assessment data</h2>
-        <p>Check that <code>questions.json</code> exists and is valid JSON.</p>
-        <p><strong>Error:</strong> ${err.message}</p>
-        <p><small>Open DevTools (F12) → Console for details.</small></p>
-      </div>`;
+    console.error("Load error:", err);
+    document.body.innerHTML = `<div style="text-align:center;padding:40px;color:#e74c3c;font-family:sans-serif;">
+      <h2>Failed to load assessment data</h2>
+      <p>Check <code>questions.json</code> exists and is valid.</p>
+      <p><strong>Error:</strong> ${err.message}</p>
+    </div>`;
     throw err;
   }
 }
@@ -103,10 +91,10 @@ function initApp() {
 
   const nameEl = document.getElementById("name");
   const idEl = document.getElementById("id");
-  const usernameEl = document.getElementById("username");
+  const userEl = document.getElementById("username");
   nameEl.value = data.name || "";
   idEl.value = data.id || "";
-  if (usernameEl) usernameEl.value = data.username || "";
+  if (userEl) userEl.value = data.username || "";
 
   if (data.id) {
     document.getElementById("locked-msg").classList.remove("hidden");
@@ -186,7 +174,7 @@ function getAnswer(id) {
 }
 
 /* --------------------------------------------------------------
-   Grade – EXACTLY as you wanted
+   Grade – 100% IDENTICAL TO YOUR WORKING SCRIPT 2
    -------------------------------------------------------------- */
 function gradeIt() {
   let total = 0;
@@ -257,11 +245,10 @@ function submitWork() {
     results
   };
 
-  // On-screen results
   const displayUsername = username || detectedUsername || "";
   document.getElementById("student").textContent =
     `${name}${displayUsername ? ` (${displayUsername}${detectedUsername && detectedUsername === displayUsername ? " (Device Auto)" : ""})` : ""} – ID: ${id}`;
-  document.getElementById("teacher-name").textContent = finalData.teacherName;
+  document.getElementById("teacher-name").textContent = teacherName;
   document.getElementById("grade").innerHTML = `${total}/${totalPoints}<br><small>(${pct}%)</small>`;
 
   const ansDiv = document.getElementById("answers");
@@ -283,7 +270,7 @@ function back() {
 }
 
 /* --------------------------------------------------------------
-   Email body
+   Email body – used in PDF
    -------------------------------------------------------------- */
 function buildEmailBody(fd) {
   const username = fd.username || detectedUsername || "";
@@ -338,7 +325,7 @@ async function sharePDF(file) {
 }
 
 /* --------------------------------------------------------------
-   Generate PDF – RED CREST HEADER
+   Generate PDF – RED HEADER + FULL INFO
    -------------------------------------------------------------- */
 async function emailWork() {
   if (!finalData) return alert("Submit first!");
@@ -357,8 +344,8 @@ async function emailWork() {
   const lineHeight = 7;
   let y = 45;
 
-  // Header – Pukekohe crest red
-  pdf.setFillColor(110, 24, 24); // #6E1818
+  // RED CREST HEADER
+  pdf.setFillColor(110, 24, 24);
   pdf.rect(0, 0, pageWidth, 35, "F");
   pdf.setTextColor(255, 255, 255);
   pdf.setFontSize(18); pdf.setFont("helvetica", "bold");
@@ -369,7 +356,6 @@ async function emailWork() {
   const lines = buildEmailBody(finalData).split("\n");
   pdf.setTextColor(0, 0, 0);
   pdf.setFontSize(11);
-  pdf.setFont("helvetica", "normal");
 
   lines.forEach(line => {
     if (y > pageHeight - 20) {
@@ -385,11 +371,7 @@ async function emailWork() {
       pdf.setFontSize(11);
       y = 45;
     }
-    if (line.includes("Score:") || line.startsWith("=") || line.startsWith("-")) {
-      pdf.setFont("helvetica", "bold");
-    } else {
-      pdf.setFont("helvetica", "normal");
-    }
+    pdf.setFont(line.includes("Score:") || line.startsWith("=") || line.startsWith("-") ? "bold" : "normal", "helvetica");
     const wrapped = pdf.splitTextToSize(line, pageWidth - 2 * margin);
     wrapped.forEach(w => { pdf.text(w, margin, y); y += lineHeight; });
   });
@@ -399,21 +381,19 @@ async function emailWork() {
   pdf.text("Generated by Pukekohe High School Technology Dept", margin, pageHeight - 10);
 
   const filename = `${finalData.name.replace(/\s+/g, "_")}_${finalData.assessment.id}_${finalData.pct}%.pdf`;
-  const pdfBlob = pdf.output("blob");
-  const file = new File([pdfBlob], filename, { type: "application/pdf" });
+  const file = new File([pdf.output("blob")], filename, { type: "application/pdf" });
   await sharePDF(file);
 }
 
 /* --------------------------------------------------------------
-   Toast
+   Toast + Protection
    -------------------------------------------------------------- */
 function showToast(text, ok = true) {
   let toast = document.getElementById("toast");
   if (!toast) {
     toast = document.createElement("div");
     toast.id = "toast";
-    toast.className = "toast";
-    toast.style.cssText = `display:none;padding:10px 16px;border-radius:6px;background:#16a34a;color:#fff;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,.15);font-family:inherit;font-size:.95rem;min-width:200px;text-align:center;`;
+    toast.style.cssText = `display:none;padding:10px 16px;border-radius:6px;background:#16a34a;color:#fff;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,.15);font-size:.95rem;text-align:center;`;
     document.body.appendChild(toast);
   }
   toast.textContent = text;
@@ -423,15 +403,8 @@ function showToast(text, ok = true) {
   showToast._t = setTimeout(() => toast.style.display = "none", 3200);
 }
 
-/* --------------------------------------------------------------
-   Protection
-   -------------------------------------------------------------- */
 const PASTE_BLOCKED_MESSAGE = "Pasting blocked!";
-async function clearClipboard() {
-  if (navigator.clipboard?.writeText) {
-    try { await navigator.clipboard.writeText(""); } catch (_) {}
-  }
-}
+async function clearClipboard() { if (navigator.clipboard?.writeText) try { await navigator.clipboard.writeText(""); } catch (_) {} }
 clearClipboard();
 function attachProtection() {
   document.querySelectorAll(".answer-field").forEach(f => {
