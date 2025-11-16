@@ -1,5 +1,5 @@
 /* script.js – US 24355 app: core logic + JSON loading + PDF + share */
-
+ 
 // Local storage key
 const STORAGE_KEY = "TECH_DATA";
 let data;
