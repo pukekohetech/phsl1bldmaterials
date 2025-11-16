@@ -1,12 +1,16 @@
-/* script.js – US 24355 app: core logic + JSON loading + PDF + share  */
+/* script.js – US 24355 app: core logic + JSON loading + PDF + share */
 const STORAGE_KEY = "TECH_DATA";
 let data;
-try { data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || { answers: {}, name: "", id: "", teacher: "", username: "" }; }
-catch (_) { data = { answers: {}, name: "", id: "", teacher: "", username: "" }; }
+try {
+  data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || { answers: {}, name: "", id: "", teacher: "", username: "" };
+} catch (_) {
+  data = { answers: {}, name: "", id: "", teacher: "", username: "" };
+}
 
+// Auto-detect Chromebook user
 let detectedUsername = "";
 if (window.chrome?.identity) {
-  chrome.identity.getProfileUserInfo({ accountStatus: 'ANY' }, info => {
+  chrome.identity.getProfileUserInfo({ accountStatus: 'ANY' }, (info) => {
     if (info?.email) {
       detectedUsername = info.email.split('@')[0];
       const el = document.getElementById("username");
@@ -22,6 +26,7 @@ if (window.chrome?.identity) {
 let currentAssessment = null;
 let finalData = null;
 
+// XOR obfuscation
 const XOR_KEY = 42;
 const xor = s => btoa([...s].map(c => String.fromCharCode(c.charCodeAt(0) ^ XOR_KEY)).join(""));
 const unxor = s => {
@@ -29,33 +34,60 @@ const unxor = s => {
   catch { return ""; }
 };
 
+// Global config
 let APP_TITLE, APP_SUBTITLE, TEACHERS, ASSESSMENTS;
 
 /* --------------------------------------------------------------
-   Load questions.json
+   Load questions.json – robust, case-insensitive, safe
    -------------------------------------------------------------- */
 async function loadQuestions() {
   try {
     const res = await fetch("questions.json");
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const json = await res.json();
-    APP_TITLE = json.APP_TITLE;
-    APP_SUBTITLE = json.APP_SUBTITLE;
-    TEACHERS = json.TEACHERS;
-    ASSESSMENTS = json.ASSSESSMENTS.map(ass => ({
-      ...ass,
-      questions: ass.questions.map(q => ({
-        ...q,
-        rubric: q.rubric?.map(r => ({ ...r, check: new RegExp(r.check, "i") })) || []
-      }))
-    }));
+
+    // Normalize keys (case-insensitive fallback)
+    const get = (obj, ...keys) => {
+      for (const k of keys) if (obj[k] !== undefined) return obj[k];
+      return undefined;
+    };
+
+    APP_TITLE = get(json, "APP_TITLE", "app_title", "title") || "Assessment";
+    APP_SUBTITLE = get(json, "APP_SUBTITLE", "app_subtitle", "subtitle") || "";
+    TEACHERS = Array.isArray(get(json, "TEACHERS", "teachers", "Teachers")) ? get(json, "TEACHERS", "teachers", "Teachers") : [];
+    const rawAssessments = Array.isArray(get(json, "ASSESSMENTS", "assessments", "Assessments")) ? get(json, "ASSESSMENTS", "assessments", "Assessments") : [];
+
+    if (rawAssessments.length === 0) throw new Error("No assessments found in questions.json");
+
+    ASSESSMENTS = rawAssessments
+      .filter(ass => ass && ass.id && Array.isArray(ass.questions))
+      .map(ass => ({
+        ...ass,
+        questions: ass.questions
+          .filter(q => q && q.id && typeof q.maxPoints === "number")
+          .map(q => ({
+            ...q,
+            rubric: Array.isArray(q.rubric)
+              ? q.rubric.map(r => ({
+                  ...r,
+ Crack: new RegExp(r.check || "", "i")
+                }))
+              : []
+          }))
+      }));
+
+    if (ASSESSMENTS.length === 0) throw new Error("No valid assessments after filtering");
+
+    console.log("Loaded assessments:", ASSESSMENTS.length);
   } catch (err) {
     console.error("Failed to load questions.json:", err);
-    document.body.innerHTML = `<div style="text-align:center;padding:40px;color:#e74c3c;font-family:sans-serif;">
-      <h2>Failed to load assessment data</h2>
-      <p>Check that <code>questions.json</code> exists and is valid JSON.</p>
-      <p><strong>Error:</strong> ${err.message}</p>
-    </div>`;
+    document.body.innerHTML = `
+      <div style="text-align:center;padding:40px;color:#e74c3c;font-family:sans-serif;">
+        <h2>Failed to load assessment data</h2>
+        <p>Check that <code>questions.json</code> exists and is valid JSON.</p>
+        <p><strong>Error:</strong> ${err.message}</p>
+        <p><small>Open DevTools (F12) → Console for details.</small></p>
+      </div>`;
     throw err;
   }
 }
@@ -70,11 +102,11 @@ function initApp() {
   document.getElementById("header-subtitle").textContent = APP_SUBTITLE;
 
   const nameEl = document.getElementById("name");
-  const idEl   = document.getElementById("id");
-  const userEl = document.getElementById("username");
+  const idEl = document.getElementById("id");
+  const usernameEl = document.getElementById("username");
   nameEl.value = data.name || "";
-  idEl.value   = data.id   || "";
-  if (userEl) userEl.value = data.username || "";
+  idEl.value = data.id || "";
+  if (usernameEl) usernameEl.value = data.username || "";
 
   if (data.id) {
     document.getElementById("locked-msg").classList.remove("hidden");
@@ -106,9 +138,9 @@ function initApp() {
    Save student info
    -------------------------------------------------------------- */
 function saveStudentInfo() {
-  data.name     = document.getElementById("name").value.trim();
-  data.id       = document.getElementById("id").value.trim();
-  data.teacher  = document.getElementById("teacher").value;
+  data.name = document.getElementById("name").value.trim();
+  data.id = document.getElementById("id").value.trim();
+  data.teacher = document.getElementById("teacher").value;
   data.username = document.getElementById("username")?.value.trim() || "";
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
@@ -154,7 +186,7 @@ function getAnswer(id) {
 }
 
 /* --------------------------------------------------------------
-   Grade – **exactly the version you liked**
+   Grade – EXACTLY as you wanted
    -------------------------------------------------------------- */
 function gradeIt() {
   let total = 0;
@@ -191,16 +223,14 @@ function gradeIt() {
 function submitWork() {
   saveStudentInfo();
   const name = data.name;
-  const id   = data.id;
+  const id = data.id;
   const username = data.username || "";
   if (!name || !id || !data.teacher) return alert("Fill Name, ID, and Teacher");
   if (!currentAssessment) return alert("Select an assessment");
   if (data.id && document.getElementById("id").value !== data.id) return alert("ID locked to: " + data.id);
 
   const { total, results } = gradeIt();
-
-  const totalPoints = currentAssessment.totalPoints ||
-    currentAssessment.questions.reduce((s, q) => s + q.maxPoints, 0);
+  const totalPoints = currentAssessment.totalPoints || currentAssessment.questions.reduce((s, q) => s + q.maxPoints, 0);
   const pct = totalPoints ? Math.round((total / totalPoints) * 100) : 0;
 
   const teacherEmail = data.teacher || "";
@@ -227,7 +257,7 @@ function submitWork() {
     results
   };
 
-  // ---- on-screen results -------------------------------------------------
+  // On-screen results
   const displayUsername = username || detectedUsername || "";
   document.getElementById("student").textContent =
     `${name}${displayUsername ? ` (${displayUsername}${detectedUsername && detectedUsername === displayUsername ? " (Device Auto)" : ""})` : ""} – ID: ${id}`;
@@ -246,13 +276,14 @@ function submitWork() {
   document.getElementById("form").classList.add("hidden");
   document.getElementById("result").classList.remove("hidden");
 }
+
 function back() {
   document.getElementById("result").classList.add("hidden");
   document.getElementById("form").classList.remove("hidden");
 }
 
 /* --------------------------------------------------------------
-   Email body (used for both email & PDF)
+   Email body
    -------------------------------------------------------------- */
 function buildEmailBody(fd) {
   const username = fd.username || detectedUsername || "";
@@ -307,7 +338,7 @@ async function sharePDF(file) {
 }
 
 /* --------------------------------------------------------------
-   Generate PDF – **red crest header + all extra info**
+   Generate PDF – RED CREST HEADER
    -------------------------------------------------------------- */
 async function emailWork() {
   if (!finalData) return alert("Submit first!");
@@ -320,14 +351,14 @@ async function emailWork() {
 
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF("p", "mm", "a4");
-  const pageWidth  = pdf.internal.pageSize.getWidth();
+  const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
   const margin = 15;
   const lineHeight = 7;
   let y = 45;
 
-  // ----- Header (crest-red) -----
-  pdf.setFillColor(110, 24, 24);               // #6E1818
+  // Header – Pukekohe crest red
+  pdf.setFillColor(110, 24, 24); // #6E1818
   pdf.rect(0, 0, pageWidth, 35, "F");
   pdf.setTextColor(255, 255, 255);
   pdf.setFontSize(18); pdf.setFont("helvetica", "bold");
@@ -335,7 +366,6 @@ async function emailWork() {
   pdf.setFontSize(12); pdf.setFont("helvetica", "normal");
   pdf.text(APP_SUBTITLE, margin, 28);
 
-  // ----- Body (same text as email) -----
   const lines = buildEmailBody(finalData).split("\n");
   pdf.setTextColor(0, 0, 0);
   pdf.setFontSize(11);
@@ -345,7 +375,6 @@ async function emailWork() {
     if (y > pageHeight - 20) {
       pdf.addPage();
       y = 20;
-      // re-add header on every new page
       pdf.setFillColor(110, 24, 24);
       pdf.rect(0, 0, pageWidth, 35, "F");
       pdf.setTextColor(255, 255, 255);
@@ -356,24 +385,19 @@ async function emailWork() {
       pdf.setFontSize(11);
       y = 45;
     }
-
-    // Bold for important lines
     if (line.includes("Score:") || line.startsWith("=") || line.startsWith("-")) {
       pdf.setFont("helvetica", "bold");
     } else {
       pdf.setFont("helvetica", "normal");
     }
-
     const wrapped = pdf.splitTextToSize(line, pageWidth - 2 * margin);
     wrapped.forEach(w => { pdf.text(w, margin, y); y += lineHeight; });
   });
 
-  // ----- Footer -----
   pdf.setFontSize(9);
   pdf.setTextColor(100, 100, 100);
   pdf.text("Generated by Pukekohe High School Technology Dept", margin, pageHeight - 10);
 
-  // ----- Save -----
   const filename = `${finalData.name.replace(/\s+/g, "_")}_${finalData.assessment.id}_${finalData.pct}%.pdf`;
   const pdfBlob = pdf.output("blob");
   const file = new File([pdfBlob], filename, { type: "application/pdf" });
@@ -423,9 +447,9 @@ document.addEventListener("contextmenu", e => { if (!e.target.matches("input, te
    Export
    -------------------------------------------------------------- */
 window.loadAssessment = loadAssessment;
-window.submitWork     = submitWork;
-window.back           = back;
-window.emailWork      = emailWork;
+window.submitWork = submitWork;
+window.back = back;
+window.emailWork = emailWork;
 
 /* --------------------------------------------------------------
    Start
