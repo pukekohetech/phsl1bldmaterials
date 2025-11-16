@@ -1,5 +1,5 @@
 // sw.js – Offline-first PWA 
-const CACHE_NAME = 'phs-materials-v3';
+const CACHE_NAME = 'phs-materials-v4';
 const CORE_ASSETS = [
   './', './index.html', './script.js', './questions.json',
   './manifest.webmanifest', './icon-192.png', './icon-512.png',
