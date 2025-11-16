@@ -1,0 +1,27 @@
+{
+  "name": "Pukekohe High School – Materials Technology",
+  "short_name": "Materials Tech",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#6e1818",
+  "theme_color": "#6e1818",
+  "orientation": "portrait-primary",
+  "scope": ".",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "description": "US 24355 Materials Technology Assessment Tool – Pukekohe High School",
+  "categories": ["education", "productivity"],
+  "lang": "en-NZ"
+}

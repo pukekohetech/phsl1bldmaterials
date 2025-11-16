@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.webmanifest">
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Set the browser's theme color to match the PHS crest -->
+  <meta name="theme-color" content="#6e1818">
+  <title id="page-title">Loading…</title>
+
+  <!-- ========================================
+       CSS – Clean, Responsive, Easy to Edit
+       ======================================== -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f9;
+      color: #2c3e50;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+    }
+    header {
+      /* Use a dark red background inspired by the Pukekohe High School crest */
+      background: #6e1818;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 { margin: 0; font-size: 1.8rem; }
+    header p { margin: 5px 0 0; font-size: 1rem; opacity: .9; }
+    .form-section { padding: 25px; border-bottom: 1px solid #eee; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border .2s;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      /* Dark red highlight on focus */
+      border-color: #6e1818;
+      box-shadow: 0 0 0 2px rgba(110, 24, 24, .2);
+    }
+    .locked-msg {
+      font-size: .9rem;
+      color: #e74c3c;
+      margin-top: 5px;
+    }
+    .assessment-header {
+      background: #6e1818;
+      color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    .assessment-header h2 { margin: 0; font-size: 1.5rem; }
+    .assessment-header p { margin: 5px 0 0; font-size: 1rem; }
+    .q {
+      background: #f8f9fa;
+      padding: 18px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      /* Dark red accent bar on question blocks */
+      border-left: 4px solid #6e1818;
+    }
+    .q strong { color: #2c3e50; font-size: 1.1rem; }
+    .answer-field { margin-top: 10px; font-family: inherit; }
+    .btn {
+      /* Primary buttons use the crest-inspired red */
+      background: #6e1818;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .2s;
+      margin-right: 10px;
+    }
+    /* Darken the red slightly on hover */
+    .btn:hover { background: #4b0f0f; }
+    .btn-secondary { background: #7f8c8d; }
+    .btn-secondary:hover { background: #95a5a6; }
+    .btn-group { margin-top: 20px; text-align: center; }
+    .result-section { padding: 25px; text-align: center; }
+    .result-header { margin-bottom: 25px; }
+    .grade { font-size: 2.5rem; font-weight: bold; color: #6e1818; }
+    .grade small { font-size: 1.2rem; color: #7f8c8d; }
+    .feedback {
+      text-align: left;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 8px;
+      background: #f8f9fa;
+    }
+    .correct { border-left: 5px solid #27ae60; }
+    .partial { border-left: 5px solid #f39c12; }
+    .wrong { border-left: 5px solid #e74c3c; }
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2c3e50;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: .95rem;
+      opacity: 0;
+      transition: opacity .3s;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+      min-width: 200px;
+      text-align: center;
+    }
+    #loading { text-align: center; padding: 30px; color: #666; font-size: 1.1rem; }
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; margin: 8px 0; }
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1 id="header-title">Loading…</h1>
+      <p id="header-subtitle">Loading…</p>
+    </header>
+
+    <!-- STUDENT FORM -->
+    <section class="form-section" id="form">
+      <div id="loading">Loading assessment data…</div>
+
+      <div class="form-grid">
+        <div>
+          <label for="name">Student Name</label>
+          <input type="text" id="name" placeholder="Enter your full name" required />
+        </div>
+        <div>
+          <label for="id">Student ID</label>
+          <input type="text" id="id" placeholder="e.g. 12345" required />
+          <div id="locked-msg" class="locked-msg hidden">
+            ID locked to: <strong id="locked-id"></strong>
+          </div>
+        </div>
+        <div>
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="e.g. jsmith" />
+        </div>
+        <div>
+          <label for="teacher">Teacher</label>
+          <select id="teacher" required>
+            <option value="">Select teacher</option>
+          </select>
+        </div>
+        <div>
+          <label for="assessmentSelector">Assessment Part</label>
+          <select id="assessmentSelector">
+            <option value="">Select part</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn" onclick="loadAssessment()">Load Assessment</button>
+      </div>
+
+      <div id="questions"></div>
+
+      <div class="btn-group">
+        <button class="btn" onclick="submitWork()">Submit & Grade</button>
+      </div>
+    </section>
+
+    <!-- RESULT SECTION -->
+    <section class="result-section hidden" id="result">
+      <div class="result-header">
+        <h2>Assessment Complete!</h2>
+        <p><strong id="student"></strong> to <span id="teacher-name"></span></p>
+        <div class="grade" id="grade"></div>
+      </div>
+      <div id="answers"></div>
+      <div class="btn-group">
+        <button class="btn" onclick="emailWork()">Email via Default App</button>
+        <button class="btn btn-secondary" onclick="back()">Back to Form</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module">
+    import './script.js';
+  </script>
+  <script nomodule>
+    alert("Your browser is too old. Please use Chrome, Edge, Firefox, or Safari.");
+  </script>
+</body>
+</html>
