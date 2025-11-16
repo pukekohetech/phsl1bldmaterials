@@ -1,4 +1,4 @@
-/* script.js – US 24355 app: core logic + JSON loading + PDF + share */
+/* script.js – US 24355 app: core logic + JSON loading + PDF + share  */
 const STORAGE_KEY = "TECH_DATA";
 let data;
 try { data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || { answers: {}, name: "", id: "", teacher: "", username: "" }; }
