@@ -1,10 +1,10 @@
 {
-  "APP_ID": "Knowledge Assessment - US 24360 (v3) Demonstrate knowledge of timber and other construction materials used in BCATS projects",
-  "VERSION": "2026",
-  "APP_TITLE": "US 24360 (v3) Timber and construction materials",
-  "APP_SUBTITLE": "Knowledge Assessment - Short Answer Friendly (no giveaways)",
+  "APP_ID": "US24360_BCATS_MATERIALS",
+  "VERSION": "2026.1",
+  "APP_TITLE": "US 24360 – Timber & Construction Materials (BCATS)",
+  "APP_SUBTITLE": "PHS - Level 2 BCATS – Assessment",
   "DEADLINE": {
-    "day": 30,
+    "day": 31,
     "month": 12,
     "label": "Submission deadline"
   },
@@ -25,240 +25,1328 @@
       "email": "technology@pukekohehigh.school.nz"
     }
   ],
+  "SCORING": {
+    "rubricNotes": [
+      "Multi-answer questions are assessed with one rubric entry per expected point (e.g., 3 advantages = 3 rubric rows).",
+      "Rubric checks may include more valid examples than required, but maxPoints remains the number stated in the question.",
+      "Duplicates are allowed by regex checks; teachers should visually confirm unique answers where needed."
+    ]
+  },
   "ASSESSMENTS": [
     {
-      "id": "US 24360 (v3) - Knowledge Quiz",
-      "title": "US 24360 v3 Knowledge Assessment",
-      "attachSignoff": true,
+      "id": "24360-sr1",
+      "title": "Learner Self-reflection 1 – 24360 (v3)",
       "subtitle": "Demonstrate knowledge of timber and other construction materials used in BCATS projects",
-      "usNumber": "US 24360",
-      "usVersion": "3",
+      "usNumber": "24360",
+      "usVersion": "v3",
       "credits": 4,
-      "standardType": "internal",
+      "standardType": "",
       "questions": [
         {
-          "id": "q1_define_timber_types",
-          "text": "1.\tDescribe these types of timber: Indigenous, Exotic, Imported.",
+          "id": "sr1_q1",
+          "text": "1.\tExplain why the heartwood of the tree is harder and more durable than the sapwood in most timbers.",
           "image": "blank.jpg",
-          "hint": "Write a short definition for each term (1–2 lines each).",
+          "hint": "Use the parts-of-a-tree explanation and compare what heartwood does vs what sapwood does. (See p. 8–9, “Parts of a tree”)",
+          "type": "long",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "heartwood|sapwood",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "resin|extractives|natural\\s*oils?|chemicals?|tannins?|deposits?|gum",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "dead\\s*cells?|no\\s*longer\\s*transports?|sap\\s*flow|less\\s*moisture|fungal|rot|insect|durable|resist",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr1_q2",
+          "text": "2.\tName an indigenous timber that is commonly used for high quality furniture making.",
+          "image": "blank.jpg",
+          "hint": "Use the indigenous timber examples list and choose a furniture-quality species. (See p. 11, “Indigenous timbers”)",
+          "type": "short",
+          "maxPoints": 1,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "rimu|kauri|totara|tawa|matai|beech|rewarewa|kahikatea",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr1_q3",
+          "text": "3.\tName the most commonly used exotic timber for construction in New Zealand.",
+          "image": "blank.jpg",
+          "hint": "Use the exotic timber section and identify the main plantation building timber in NZ. (See p. 12, “Exotic timbers”)",
+          "type": "short",
+          "maxPoints": 1,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "radiata\\s*pine|pinus\\s*radiata",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr1_q4",
+          "text": "4.\tIdentify three advantages of using seasoned timber over unseasoned timber\n\n1.\n\n\t\n2.\n\n\t\n3.",
+          "image": "blank.jpg",
+          "hint": "Use the seasoning section that explains why timber is dried before use. (See p. 18, “Seasoning timber”)",
+          "type": "long",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "stable|stability|less\\s*(movement|shrinkage|warping|twist(ing)?|cupping)|holds\\s*shape",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "stronger|strength|better\\s*strength|better\\s*performance|holds\\s*fixings|nails?|screws?",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "glue|gluing|adhesive|finishes?|paint|stain|varnish|machines?|workability|easier\\s*to\\s*work",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr1_q5",
+          "text": "5.\tWhat are two methods of seasoning timber?\n\n1.\n\t\n2.",
+          "image": "blank.jpg",
+          "hint": "Use the heading that lists seasoning methods and name the two main processes. (See p. 18–19, “Seasoning methods”)",
+          "type": "short",
+          "maxPoints": 2,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "air\\s*(season|dry)|air\\s*dry(ing)?|natural\\s*(season|dry)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "kiln\\s*(season|dry)|kiln\\s*dry(ing)?",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr1_q6",
+          "text": "6.\tWhat is moisture content within timber?",
+          "image": "blank.jpg",
+          "hint": "Use the moisture content definition in the seasoning/moisture section. (See p. 22, “Moisture content”)",
+          "type": "long",
+          "maxPoints": 2,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "percentage|%|ratio|proportion",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "water|moisture|weight\\s*of\\s*water|dry\\s*weight|oven\\s*dry|relative\\s*to\\s*(dry|oven\\s*dry)\\s*mass",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr1_q7",
+          "text": "7.\tWhat are two methods of determining the moisture content in timber?\n\n1.\n\t\n2.",
+          "image": "blank.jpg",
+          "hint": "Use the moisture testing section and name two different measurement methods described. (See p. 22, “Measuring moisture content”)",
+          "type": "short",
+          "maxPoints": 2,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "moisture\\s*meter|probe\\s*meter|electrical\\s*meter|pin\\s*meter|capacitance\\s*meter",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "oven\\s*dry|oven\\s*test|weigh|before\\s*and\\s*after|dry\\s*weight|laboratory\\s*test",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr1_q8",
+          "text": "8.\tWhat effects would the following defects have on timber?\n\nKnot\n\n\n\nSplit\n\n\nWarp",
+          "image": "blank.jpg",
+          "hint": "Use the defects pages and describe how each defect affects timber performance (strength, fit, appearance). (See p. 24–25, “Timber defects”)",
+          "type": "long",
+          "maxPoints": 6,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "knot",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "weak|reduce\\s*strength|hard\\s*to\\s*machine|tear\\s*out|appearance|defect|stress",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "split|crack|check",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "weaken|fail|break|not\\s*suitable|reduce\\s*strength|spreads?|waste",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "warp|bow|cup|twist|crook",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "doesn'?t\\s*fit|won'?t\\s*stay\\s*straight|movement|hard\\s*to\\s*join|hard\\s*to\\s*fix|distortion",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr1_q9",
+          "text": "9.\tName a type of timber-destroying insect that is commonly found in New Zealand.",
+          "image": "blank.jpg",
+          "hint": "Use the timber pests section and choose one NZ insect that attacks timber. (See p. 26–28, “Borers and termites”)",
+          "type": "short",
+          "maxPoints": 1,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "borer|common\\s*house\\s*borer|anobium\\s*punctatum|two\\-?toothed\\s*longhorn|huhu|termite",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr1_q10",
+          "text": "10.\tWhat should you do if you timber infested with wood destroying insects?",
+          "image": "blank.jpg",
+          "hint": "Use the pest control/prevention guidance and describe what actions are recommended. (See p. 26–28, “Control and prevention”)",
+          "type": "long",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "identify|inspect|confirm|assess|check\\s*extent",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "isolate|remove|replace|discard|don'?t\\s*use|quarantine",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "treat|insecticide|boron|spray|professional|pest\\s*control|fumigation|MPI",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr1_q11",
+          "text": "11.\tIdentify 2 ways to prevent fungal growth in timber\n\n1.\n\t\n2.",
+          "image": "blank.jpg",
+          "hint": "Use the fungal infection/rot page and identify ways to stop the conditions fungi need. (See p. 29, “Fungal infection / rot”)",
+          "type": "short",
+          "maxPoints": 2,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "keep\\s*dry|reduce\\s*moisture|cover|off\\s*the\\s*ground|avoid\\s*water|drainage|fix\\s*leaks?",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "ventilat|air\\s*flow|stack\\s*properly|fillets?|space\\s*between|sunlight|treat(ed)?|preservative|fungicide",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "24360-sr2",
+      "title": "Learner Self-reflection 2 – 24360 (v3)",
+      "subtitle": "Demonstrate knowledge of timber and other construction materials used in BCATS projects",
+      "usNumber": "24360",
+      "usVersion": "v3",
+      "credits": 4,
+      "standardType": "",
+      "questions": [
+        {
+          "id": "sr2_q1",
+          "text": "1.\tExplain the following terms.\nIndigenous:\nExotic:\nImported:",
+          "image": "blank.jpg",
+          "hint": "Use the timber classification definitions and write each term in your own words. (See p. 11 and p. 13, “Indigenous / Exotic / Imported”)",
           "type": "long",
           "maxPoints": 6,
           "rubric": [
             {
               "points": 2,
-              "check": "\\b(indigenous|native)\\b.*\\b(new\\s*zealand|nz|aotearoa)\\b|\\bnew\\s*zealand\\b.*\\b(native|indigenous)\\b",
+              "check": "indigenous[\\s\\S]*(native|new\\s*zealand|nz|grows\\s*naturally|from\\s*here)",
               "flags": "i"
             },
             {
               "points": 2,
-              "check": "\\b(exotic)\\b.*\\b(not\\s*(native|indigenous)|from\\s*overseas|introduced)\\b.*\\b(grown|planted|plantation)\\b|\\bgrown\\b.*\\bnz\\b.*\\b(exotic|introduced)\\b",
+              "check": "exotic[\\s\\S]*(introduced|not\\s*native|from\\s*overseas|grown\\s*in\\s*nz\\s*but\\s*introduced)",
               "flags": "i"
             },
             {
               "points": 2,
-              "check": "\\b(imported)\\b.*\\b(overseas|foreign|another\\s*country|brought\\s*in)\\b",
+              "check": "imported[\\s\\S]*(brought\\s*into\\s*nz|from\\s*overseas|not\\s*grown\\s*here|shipped)",
               "flags": "i"
             }
           ]
         },
         {
-          "id": "q2_softwood_vs_hardwood",
-          "text": "2.\tExplain the difference between hardwood and softwood (include one feature of each).",
+          "id": "sr2_q2",
+          "text": "2.\tName the most commonly grown timber in New Zealand.",
           "image": "blank.jpg",
-          "hint": "Think about leaf type (deciduous/evergreen), density/strength, and typical uses.",
-          "type": "long",
-          "maxPoints": 4,
+          "hint": "Use the exotic timber page and identify the main plantation species. (See p. 12, “Exotic timbers”)",
+          "type": "short",
+          "maxPoints": 1,
           "rubric": [
             {
-              "points": 2,
-              "check": "\\b(hardwood)\\b.*\\b(broadleaf|deciduous|denser|dense|stronger|strong|heavier|harder)\\b",
-              "flags": "i"
-            },
-            {
-              "points": 2,
-              "check": "\\b(softwood)\\b.*\\b(cone|conifer|evergreen|needle|lighter|soft|less\\s*dense|weaker)\\b",
+              "points": 1,
+              "check": "radiata\\s*pine|pinus\\s*radiata",
               "flags": "i"
             }
           ]
         },
         {
-          "id": "q3_tree_timber_type_match",
-          "text": "3.\tState whether each timber is a hardwood or softwood: Radiata pine, Rimu, Kauri, Totara, Douglas fir.",
+          "id": "sr2_q3",
+          "text": "3.\tList five uses for Radiata Pine.\n\n1.\n\t\n2.\n\t\n3.\n\t\n4.\n\t\n5.",
           "image": "blank.jpg",
-          "hint": "Write each name and then 'hardwood' or 'softwood'.",
+          "hint": "Use the radiata pine description and list different uses mentioned or implied for building/woodworking. (See p. 12, “Radiata Pine”)",
           "type": "long",
           "maxPoints": 5,
           "rubric": [
             {
               "points": 1,
-              "check": "\\b(radiata)\\b.*\\bsoftwood\\b|\\bsoftwood\\b.*\\b(radiata)\\b",
+              "check": "framing|studs?|joists?|trusses?|structural|building",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\b(rimu)\\b.*\\bhardwood\\b|\\bhardwood\\b.*\\b(rimu)\\b",
+              "check": "furniture|cabinet|joinery|mouldings?|architraves?|skirting",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\b(kauri)\\b.*\\bhardwood\\b|\\bhardwood\\b.*\\b(kauri)\\b",
+              "check": "plywood|panel|manufactured\\s*board|MDF|particle\\s*board|OSB|LVL",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\b(totara|tōtara)\\b.*\\bhardwood\\b|\\bhardwood\\b.*\\b(totara|tōtara)\\b",
+              "check": "fencing|posts?|rails?|deck(ing)?|landscape",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\b(douglas\\s*fir|douglasfir|douglas\\s*pine|oregon)\\b.*\\bsoftwood\\b|\\bsoftwood\\b.*\\b(douglas\\s*fir|oregon)\\b",
+              "check": "packaging|pallets?|crates?|paper|pulp|pack",
               "flags": "i"
             }
           ]
         },
         {
-          "id": "q4_log_parts",
-          "text": "4.\tName the following parts of a log: Growth rings, Bark, Cambium, Sapwood, Heartwood.",
-          "image": "logparts.png",
-          "hint": "Label each part correctly (can be written as a list).",
+          "id": "sr2_q4",
+          "text": "4.\tWhat do the following abbreviations mean?\n\nRS\t\nD4S\t\nKD  \t\nRAD\t\nMG\t\nBT",
+          "image": "blank.jpg",
+          "hint": "Use the abbreviations table used for timber ordering. (See p. 17, “Timber abbreviations”)",
           "type": "long",
-          "maxPoints": 5,
+          "maxPoints": 6,
           "rubric": [
             {
               "points": 1,
-              "check": "\\bgrowth\\s*rings?\\b|\\brings?\\b",
+              "check": "\\bRS\\b[\\s\\S]*(rough\\s*sawn|rough\\-?sawn)",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\bbark\\b",
+              "check": "D4S|dressed\\s*four\\s*sides?|dressed\\s*4\\s*sides?",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\bcambium\\b",
+              "check": "\\bKD\\b[\\s\\S]*(kiln\\s*dried)",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\bsapwood\\b",
+              "check": "\\bRAD\\b[\\s\\S]*(radiata)",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\bheart\\s*wood\\b|\\bheartwood\\b",
+              "check": "\\bMG\\b[\\s\\S]*(machine\\s*gauged|machine\\s*graded|moisture\\s*grade|moulded\\s*grooved)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\bBT\\b[\\s\\S]*(boron\\s*treated|building\\s*timber|treated)",
               "flags": "i"
             }
           ]
         },
         {
-          "id": "q5_knot_effects",
-          "text": "5.\tA large knot runs through the face of a board. Give TWO effects on working or structural quality.",
-          "image": "wooddefects.png",
-          "hint": "One can be structural (strength). One can be working/finishing (machining/appearance).",
+          "id": "sr2_q5a",
+          "text": "5.\tAbbreviate the following for a timber order.\n\na)\tNew Zealand Oregon, 75 x 50, Number 1 grade, dressed four sides, air dried, selected lengths, 2 lengths @ 5.4 metres, 5 lengths @ 4.8 metres.",
+          "image": "blank.jpg",
+          "hint": "Use the timber order examples and abbreviations to format the order line correctly. (See p. 16–17, “Timber ordering” and “Abbreviations”)",
+          "type": "long",
+          "maxPoints": 6,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "Oregon|NZ\\s*Oregon|Douglas\\s*fir|DF",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "75\\s*[x×]\\s*50",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "No\\.?\\s*1|#\\s*1|Number\\s*1|1\\s*grade",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "D4S|dressed\\s*4\\s*sides?",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "AD|air\\s*dried|air\\s*dry",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "SL|selected\\s*lengths?|2\\s*@\\s*5\\.4|5\\s*@\\s*4\\.8|5\\.4\\s*m|4\\.8\\s*m",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr2_q5b",
+          "text": "b)\tRadiata pine, 150 x 50, rough sawn, treatment level H4, tongue and grooved, random lengths to 45 metres.",
+          "image": "blank.jpg",
+          "hint": "Use the timber order examples and abbreviations to format the order line correctly. (See p. 16–17, “Timber ordering” and “Abbreviations”)",
+          "type": "long",
+          "maxPoints": 6,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "RAD|radiata",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "150\\s*[x×]\\s*50",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "RS|rough\\s*sawn",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "H\\s*4|H4",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "T&G|tongue\\s*(and|&)\\s*groove(d)?",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "RL|random\\s*lengths?|to\\s*45\\s*m|45\\s*met(res?|ers?)",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr2_q6",
+          "text": "6.\tWhat are 3 conditions needed for seasoning timber?\n1.\n\t\n\n2.\n\t\n\n3.",
+          "image": "blank.jpg",
+          "hint": "Use the seasoning section and identify what conditions help timber dry properly. (See p. 18–19, “Seasoning timber”)",
+          "type": "short",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "air\\s*flow|ventilat|breeze|circulation",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "warm|heat|temperature|sun|dry\\s*conditions?|controlled\\s*(heat|temperature)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "time|duration|patience|weeks?|months?|controlled\\s*time",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr2_q7",
+          "text": "7.\tWhy should fillets be placed between the boards when seasoning?",
+          "image": "blank.jpg",
+          "hint": "Use the timber stacking and fillet explanation and describe the purpose of the spacing. (See p. 20, “Timber storage”)",
           "type": "long",
           "maxPoints": 2,
           "rubric": [
             {
               "points": 1,
-              "check": "\\b(weak|weaken|strength|structural|load\\s*bearing|failure|crack|split|break|tension|compression)\\b",
+              "check": "air\\s*flow|air\\s*circulation|ventilat|space\\s*between",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\b(difficult|hard|machining|dress|finishing|sand|plane|tear\\s*out|uneven|appearance|ugly|mark|blemish)\\b",
+              "check": "dry\\s*evenly|prevent\\s*(mould|fungus|rot)|reduce\\s*(warp|twist|cup)|avoid\\s*stain",
               "flags": "i"
             }
           ]
         },
         {
-          "id": "q6_identify_defects",
-          "text": "6.\tIdentify these defects: Bow, Split, Check, Knot.",
-          "image": "defects.png",
-          "hint": "Write the name of each defect shown.",
+          "id": "sr2_q8",
+          "text": "8.\tWhat will happen to the timber if the fillets are not vertically aligned?",
+          "image": "blank.jpg",
+          "hint": "Use the stacking guidance and identify what poor support does to timber while drying. (See p. 20, “Timber storage”)",
+          "type": "short",
+          "maxPoints": 2,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "warp|bow|twist|cup|crook|distort",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "uneven\\s*support|weight|pressure|stack\\s*(leans|unstable)|bends|sags?",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr2_q9",
+          "text": "9.\tWhat are 3 advantages of kiln seasoning over air seasoning?\n\n1.\n\t\n\n2.\n\t\n\n3.",
+          "image": "blank.jpg",
+          "hint": "Use the kiln seasoning conditions and the air vs kiln comparison table. (See p. 19, “Air seasoning and kiln seasoning”)",
+          "type": "long",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "faster|quick|speed|time\\s*saving|days|weeks",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "more\\s*consistent|controlled|uniform|even\\s*moisture|accurate",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "kills\\s*(insects|borer)|sterilis|reduces\\s*(fungus|mould)|better\\s*quality|less\\s*defects",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr2_q10",
+          "text": "10.\tComplete the following sentences:\nEquilibrium Moisture Content (EMC) is reached when the moisture  \n\n\nMost shrinkage of timber will occur in the        ________________________________________\n\nShrinkage will start to occur when timber has reached its Fibre ________________   \n\n______________ which is 25 to _____% MC.",
+          "image": "blank.jpg",
+          "hint": "Use the moisture/shrinkage section and find EMC, the direction with most shrinkage, and the fibre saturation information. (See p. 23, “Suitable moisture content levels”)",
+          "type": "long",
+          "maxPoints": 4,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "EMC|equilibrium",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "timber\\s*(moisture|water)\\s*content\\s*(equals|matches|same\\s*as)\\s*(air|surroundings|environment|relative\\s*humidity)|no\\s*net\\s*(gain|loss)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "tangential|across\\s*the\\s*grain|width|flat\\s*sawn|growth\\s*rings",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "fibre\\s*saturation\\s*point|FSP|25\\s*to\\s*30|30\\s*%|25\\s*%|\\b3\\s*0\\b",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr2_q11",
+          "text": "11.\tDescribe the consequences of using timber with a moisture content of 25% to construct a cabinet.",
+          "image": "blank.jpg",
+          "hint": "Use the moisture content suitability table and the shrinkage/movement notes, then apply it to cabinet joinery and finish. (See p. 23, “Suitable moisture content levels”)",
+          "type": "long",
+          "maxPoints": 4,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "shrink|movement|warp|twist|cup|distort",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "joints?\\s*(open|gap|fail|loosen)|glue\\s*(fail|break)|doors?\\s*(stick|bind|won'?t\\s*close)|drawers?\\s*(stick|bind)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "crack|split|check|surface\\s*cracks?",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "finish|paint|varnish|stain\\s*(peel|crack|fail)|uneven\\s*finish|mould|fungus",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "24360-sr3",
+      "title": "Learner Self-reflection 3 – 24360 (v3)",
+      "subtitle": "Demonstrate knowledge of timber and other construction materials used in BCATS projects",
+      "usNumber": "24360",
+      "usVersion": "v3",
+      "credits": 4,
+      "standardType": "",
+      "questions": [
+        {
+          "id": "sr3_q1",
+          "text": "1.\tIdentify and describe each of these types of defects.\n\n \t \nType:   \n\t\n\nDescription: \n\n\t\n\n\t\n\n\t\nType:  \n \t\n\nDescription:",
+          "image": "blank.jpg",
+          "hint": "Use the defects pages to name each defect and describe what it looks like and how it affects timber. (See p. 24–25, “Timber defects”)",
+          "type": "long",
+          "maxPoints": 4,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "knot|split|check|wane|warp|bow|cup|twist|crook|rot|shake|gum\\s*vein|blue\\s*stain|sap\\s*stain|cross\\s*grain",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "weak|strength|appearance|structural|durability|machines?|workability",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "knot|split|check|wane|warp|bow|cup|twist|crook|rot|shake|gum\\s*vein|blue\\s*stain|sap\\s*stain|cross\\s*grain",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "weak|strength|appearance|structural|durability|machines?|workability",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr3_q2",
+          "text": "2.\tDescribe the potential consequences of using a beam with a large knot in it.",
+          "image": "blank.jpg",
+          "hint": "Use the knots explanation and relate it to structural strength and loads. (See p. 24, “Knots”)",
+          "type": "long",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "knot",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "weak|reduce\\s*strength|stress\\s*concentration|fracture|split|break|fail",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "beam|load|structural|sag|deflect|collapse|unsafe",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr3_q3",
+          "text": "3.\tIdentify the following points relating to the Common House Borer. \nLength of life cycle:\nTime of flight season:\nSize of exit hole:\nSize of adult beetle:\nExample of timber attacked:\nControl and eradication:",
+          "image": "blank.jpg",
+          "hint": "Use the Common House Borer information table and extract each detail requested. (See p. 26, “Common House Borer”)",
+          "type": "long",
+          "maxPoints": 6,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "life\\s*cycle|years?|\\b(2|3|4|5)\\b\\s*year",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "flight\\s*season|summer|spring|nov|dec|jan|feb|mar",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "exit\\s*hole|\\b(1|2|3)\\b\\s*mm|millimet",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "adult\\s*(beetle)?|\\b(3|4|5|6|7)\\b\\s*mm|millimet",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "sapwood|radiata|pine|softwood|older\\s*house|timber\\s*framing|furniture",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "spray|boron|insecticide|treat|replace|pest\\s*control|fumigat|eradicate|control",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr3_q4",
+          "text": "4.\tWhat are 3 important practices that should be followed when stacking timber on a building site?\n\n1.\n\t\n2.\n\t\n3.",
+          "image": "blank.jpg",
+          "hint": "Use the timber storage and stacking guidance for best practice on site. (See p. 20, “Timber storage”)",
+          "type": "long",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "off\\s*the\\s*ground|bearers?|dunnage|pallets?",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "cover|tarp|protect\\s*from\\s*rain|keep\\s*dry|shade|weather",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "straight|level|aligned|fillets?|stack\\s*neatly|ventilat|air\\s*flow|secure|strap",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr3_q5",
+          "text": "5.\tWhat treatment grade is suited for the following jobs?\n\nFence posts\t\nFence rails\t\nDecking timber\t\nRetaining wall\t\nInterior framing",
+          "image": "blank.jpg",
+          "hint": "Use the hazard class table and match each job to the most suitable H-level based on exposure. (See p. 30, “Hazard Classes”)",
+          "type": "long",
+          "maxPoints": 5,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "fence\\s*posts[\\s\\S]*H\\s*5|H5",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "fence\\s*rails[\\s\\S]*H\\s*3(\\.?2)?|H3(\\.?2)?|H4",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "deck(ing)?[\\s\\S]*H\\s*3(\\.?2)?|H3(\\.?2)?|H4",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "retaining\\s*wall[\\s\\S]*H\\s*5|H5",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "interior\\s*framing[\\s\\S]*H\\s*1\\.?2|H1\\.?2|boron|B2",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr3_q6",
+          "text": "6.\tWhy should you never cut post ends that are going to be imbedded in the ground?",
+          "image": "blank.jpg",
+          "hint": "Use the treated timber/treatment notes and explain how cut ends affect protection in ground contact. (See p. 31, “Timber treatment” notes)",
+          "type": "long",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "treatment|treated|H5|preservative|hazard\\s*class",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "cut\\s*end|end\\s*grain|expose(d)?\\s*(untreated|timber)|remove\\s*treatment",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "rot|fungus|decay|ground\\s*contact|moisture|fails?|shorten\\s*life",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr3_q7",
+          "text": "7.\tWhat should you do when you find timber infected with rot?",
+          "image": "blank.jpg",
+          "hint": "Use the rot section and describe the recommended response when rot is discovered. (See p. 29, “Rot prevention and management”)",
+          "type": "long",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "remove|replace|discard|don'?t\\s*use|cut\\s*out",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "identify\\s*(cause|source)|moisture|leak|fix\\s*(leak|drainage)|dry|ventilat",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "treat|preservative|fungicide|report|supervisor|inspect\\s*surrounding",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "24360-sr4",
+      "title": "Learner Self-reflection 4 – 24360 (v3)",
+      "subtitle": "Demonstrate knowledge of timber and other construction materials used in BCATS projects",
+      "usNumber": "24360",
+      "usVersion": "v3",
+      "credits": 4,
+      "standardType": "",
+      "questions": [
+        {
+          "id": "sr4_q1",
+          "text": "1.\tWhat are the 4 main ingredients needed to produce concrete?\n\n1.\n\t\n2.\n\t\n3.\n\t\n4.",
+          "image": "blank.jpg",
+          "hint": "Use the concrete basics page where the ingredients are listed. (See p. 33, “Concrete”)",
           "type": "short",
           "maxPoints": 4,
           "rubric": [
             {
               "points": 1,
-              "check": "\\bbow\\b|\\bbowing\\b",
+              "check": "cement",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\bsplit\\b|\\bsplitting\\b",
+              "check": "sand|fine\\s*aggregate",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\bcheck\\b|\\bchecking\\b",
+              "check": "gravel|stone|coarse\\s*aggregate",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\bknot\\b|\\bknots\\b",
+              "check": "water",
               "flags": "i"
             }
           ]
         },
         {
-          "id": "q7_signs_borer",
-          "text": "7a.\tWhat are TWO signs that timber is affected by borer?",
+          "id": "sr4_q2",
+          "text": "2.\tThe concrete ratios are 1:2:4. What are the ingredients for each?\n\n1:\t   _____________________________\n2:\t   _____________________________\n4:\t_____________________________",
           "image": "blank.jpg",
-          "hint": "Think: exit holes and dust/tunnels.",
+          "hint": "Use the concrete mixing ratios section and match each number to the correct ingredient type. (See p. 34, “Concrete ratios”)",
+          "type": "short",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "1[\\s\\S]*(cement)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "2[\\s\\S]*(sand|fine\\s*aggregate)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "4[\\s\\S]*(gravel|stone|coarse\\s*aggregate)",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr4_q3",
+          "text": "3.\tHow does the inclusion of steel increase the strength of concrete?",
+          "image": "blank.jpg",
+          "hint": "Use the explanation of reinforced concrete and the difference between compression and tension. (See p. 36, “Strength of concrete”)",
           "type": "long",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "reinforce(d)?|rebar|steel\\s*mesh",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "tension|tensile|stretch",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "concrete\\s*(compression|compressive)|prevents?\\s*crack(ing)?|holds\\s*together|load",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr4_q4",
+          "text": "4.\tWhat type of nails should be used when joining MDF?",
+          "image": "blank.jpg",
+          "hint": "Use the manufactured boards section where MDF fixing/nailing is described. (See p. 49, “Fixing MDF”)",
+          "type": "short",
+          "maxPoints": 1,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "bullet\\s*head|brad|lost\\s*head|finishing\\s*nails?|panel\\s*pins?",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr4_q5",
+          "text": "5.\tWhat PPE should be used when machining manufactured boards?",
+          "image": "blank.jpg",
+          "hint": "Use the manufactured boards safety notes and list PPE for dust, eyes, and noise. (See p. 46 and p. 48, “Manufactured boards” and “MDF / Particleboard”)",
+          "type": "long",
+          "maxPoints": 4,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "dust\\s*mask|respirat(or|ory)|P2",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "safety\\s*glasses|goggles|eye\\s*protection",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "earmuffs|ear\\s*plugs|hearing\\s*protection",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "gloves|protective\\s*clothing|overalls?",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr4_q6",
+          "text": "6.\tThe sheet of plywood you have ordered is an A-D grade. Describe how these grades will determine what the sheet will look like?",
+          "image": "blank.jpg",
+          "hint": "Use the plywood grading description for face/back appearance and defects. (See p. 47, “Plywood grades”)",
+          "type": "long",
+          "maxPoints": 4,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "A[\\s\\S]*(best|highest|clear|few\\s*defects|good\\s*appearance)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "D[\\s\\S]*(worst|lowest|knots?|patch|defects|rough)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "face|front|back|reverse|one\\s*side",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "paint|stain|finish|visible|hidden|lining|structural|appearance\\s*grade",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "sr4_q7",
+          "text": "7.\tDescribe 2 means of protecting mild steel from rusting.\n\n1.\n\t\n2.",
+          "image": "blank.jpg",
+          "hint": "Use the metals section and identify two protection methods used to reduce corrosion. (See p. 37, “Mild steel” / corrosion notes)",
+          "type": "short",
           "maxPoints": 2,
           "rubric": [
             {
               "points": 1,
-              "check": "\\b(exit\\s*holes?|holes?)\\b|\\b(1\\s*to\\s*2\\s*mm|2\\s*x\\s*6\\s*mm|oval|round)\\b",
+              "check": "galvanis(e|ing)|zinc\\s*coat|hot\\s*dip",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\b(frass|dust|powder|tunnel|tunnels|galleries|boring|larvae|grub)\\b",
+              "check": "paint|primer|epoxy|powder\\s*coat|oil|grease",
               "flags": "i"
             }
           ]
         },
         {
-          "id": "q8_signs_wet_rot",
-          "text": "7b.\tWhat are TWO signs that timber is affected by wet rot?",
+          "id": "sr4_q8",
+          "text": "8.\tWhat will happen if aluminium comes into contact with other metals, such as copper or steel?",
           "image": "blank.jpg",
-          "hint": "Think about colour change and softness.",
+          "hint": "Use the metals section about aluminium and dissimilar metals. (See p. 37, “Aluminium” / corrosion notes)",
           "type": "long",
-          "maxPoints": 2,
+          "maxPoints": 3,
           "rubric": [
             {
               "points": 1,
-              "check": "\\b(dark|darkening|grey|gray|discolour|discolor|stain)\\b",
+              "check": "galvanic|electrochemical|reaction|dissimilar\\s*metals",
               "flags": "i"
             },
             {
               "points": 1,
-              "check": "\\b(soft|spongy|crumb|crumble|easily|carve|knife|punky|breaks\\s*up|weak)\\b",
+              "check": "corrosion|corrode|rust|pitting|oxid",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "copper|steel|moisture|electrolyte|contact",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "24360-knowledge",
+      "title": "Knowledge Assessment – 24360 (v3)",
+      "subtitle": "Demonstrate knowledge of timber and other construction materials used in BCATS projects",
+      "usNumber": "24360",
+      "usVersion": "v3",
+      "credits": 4,
+      "standardType": "Unit Standard",
+      "questions": [
+        {
+          "id": "ka_q1",
+          "text": "1.\tDescribe these types of timber.\n\nTimber type\tDescription\nIndigenous\n\n\t\nExotic\n\n\t\nImported\n\n\t\nHardwood\n\n\t\nSoftwood",
+          "image": "blank.jpg",
+          "hint": "Use the timber classification pages and the hardwood/softwood explanation. (See p. 10–11 and p. 13, “Softwood vs hardwood” and “Indigenous/Exotic/Imported”)",
+          "type": "long",
+          "maxPoints": 10,
+          "rubric": [
+            {
+              "points": 2,
+              "check": "indigenous[\\s\\S]*(native|NZ|new\\s*zealand|grows\\s*naturally)",
+              "flags": "i"
+            },
+            {
+              "points": 2,
+              "check": "exotic[\\s\\S]*(introduced|not\\s*native|grown\\s*in\\s*nz)",
+              "flags": "i"
+            },
+            {
+              "points": 2,
+              "check": "imported[\\s\\S]*(overseas|brought\\s*into\\s*nz|not\\s*grown\\s*here)",
+              "flags": "i"
+            },
+            {
+              "points": 2,
+              "check": "hardwood[\\s\\S]*(broadleaf|deciduous|flowering|angiosperm|denser|slower\\s*growing)",
+              "flags": "i"
+            },
+            {
+              "points": 2,
+              "check": "softwood[\\s\\S]*(conifer|evergreen|needle|gymnosperm|faster\\s*growing|lighter)",
               "flags": "i"
             }
           ]
         },
         {
-          "id": "q9_env_causes_deterioration",
-          "text": "8.\tGive FOUR environmental causes of timber deterioration and describe the effect of each.",
+          "id": "ka_q2",
+          "text": "2.\tWhat type of timber comes from these trees?\n\nTree\tType of timber\nRadiata pine\t\n\nRimu\t\n\nKauri\t\n\nTotara\t\n\nTawa\t\n\nDouglas fir\t\n\nKwila",
           "image": "blank.jpg",
-          "hint": "Common ones: moisture, humidity, weather exposure, insects, ventilation.",
+          "hint": "Use the timber species pages and identify each species as indigenous/exotic/imported and hardwood/softwood. (See p. 11–13, “Timber species”)",
           "type": "long",
-          "maxPoints": 8,
+          "maxPoints": 7,
           "rubric": [
             {
-              "points": 2,
-              "check": "\\b(moisture|water|wet)\\b.*\\b(rot|fungus|decay|swell|swelling)\\b|\\b(rot|decay|fungus)\\b.*\\b(moisture|wet|water)\\b",
+              "points": 1,
+              "check": "radiata\\s*pine[\\s\\S]*(softwood|exotic)",
               "flags": "i"
             },
             {
-              "points": 2,
-              "check": "\\b(humidity|damp|condensation)\\b.*\\b(swell|movement|expand|shrink|stick|warp)\\b",
+              "points": 1,
+              "check": "rimu[\\s\\S]*(softwood|indigenous)",
               "flags": "i"
             },
             {
-              "points": 2,
-              "check": "\\b(weather|sun|rain|wind|uv|exposed)\\b.*\\b(crack|check|fade|split|surface)\\b",
+              "points": 1,
+              "check": "kauri[\\s\\S]*(softwood|indigenous)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "totara[\\s\\S]*(softwood|indigenous)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "tawa[\\s\\S]*(hardwood|indigenous)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "douglas\\s*fir|oregon[\\s\\S]*(softwood|imported|exotic)",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "kwila[\\s\\S]*(hardwood|imported)",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "ka_q4",
+          "text": "4.\tCompare flat or tangential cut timber with quarter sawn or radial cut. Complete the following sentences.\na.\t…………………………. cut timber has a better wearing surface.\nb.\t………………………… cut timber is strong and suitable for beams.\nc.\tThe medullary rays on ………………………… cut timber produces an attractive effect on some timbers.\nd.\tTimber cupping away from the heart is more likely with ………………………… cut timber.",
+          "image": "blank.jpg",
+          "hint": "Use the timber conversion pages and the notes comparing flat/tangential vs quarter/radial cutting. (See p. 14–15, “Timber conversion”)",
+          "type": "short",
+          "maxPoints": 4,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "quarter\\s*sawn|radial",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "quarter\\s*sawn|radial",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "quarter\\s*sawn|radial",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "flat\\s*sawn|tangential",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "ka_q9",
+          "text": "9.\tWhat is the difference between rough sawn and dressed timber?",
+          "image": "blank.jpg",
+          "hint": "Use the timber conversion/finish section describing rough sawn vs dressed (planed) timber. (See p. 15, “Rough sawn vs dressed”)",
+          "type": "long",
+          "maxPoints": 3,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "rough\\s*sawn|RS",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "dressed|planed|smooth|D4S",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "size|dimension|accurate|finished\\s*size|tolerance|surface\\s*finish",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "ka_q10",
+          "text": "10.\tWhat is the difference between air seasoning and kiln seasoning timber?",
+          "image": "blank.jpg",
+          "hint": "Use the seasoning pages and compare the two methods using the information provided. (See p. 18–19, “Air seasoning” vs “Kiln seasoning”)",
+          "type": "long",
+          "maxPoints": 4,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "air\\s*season|air\\s*dry|natural",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "kiln\\s*season|kiln\\s*dry|controlled",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "time|faster|slower|weeks|months|days",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "quality|consistent|moisture\\s*content|defects|cost|weather\\s*dependent",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "ka_q16",
+          "text": "16.\tChoose 3 different construction materials and complete the following tables.\n\nMaterial 1 name:\nWhat is it made of?\nWhat are its basic structural properties?\nWhat can it be used for?\nWhat are 2 tips for handling/working with it safely?\nDescribe any special handling requirements.\nHow should it be stored?\n\nMaterial 2 name:\nWhat is it made of?\nWhat are its basic structural properties?\nWhat can it be used for?\nWhat are 2 tips for handling/working with it safely?\nDescribe any special handling requirements?\nHow should it be stored?\n\nMaterial 3 name:\nWhat is it made of?\nWhat are its basic structural properties?\nWhat can it be used for?\nWhat are 2 tips for handling/working with it safely?\nDescribe any special handling requirements?\nHow should it be stored?",
+          "image": "blank.jpg",
+          "hint": "Use the construction materials section and choose three different materials with enough detail to complete each heading. (See p. 33–49, “Other construction materials”)",
+          "type": "long",
+          "maxPoints": 18,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "material\\s*1|MDF|plywood|concrete|steel|aluminium|glass|plastic|composite|fibre\\s*cement|plasterboard",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "made\\s*of|cement|aggregate|fibres?|resin|layers?|veneers?|metal\\s*alloy|polymer|gypsum|cellulose",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "strength|tensile|compressive|brittle|ductile|stiff|flex|durable|waterproof|corrode",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "use(d)?\\s*for|structural|lining|cladding|framing|reinforcement|panels?|flooring|furniture|roofing",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "PPE|gloves|mask|eye\\s*protection|hearing\\s*protection|ventilat|dust|SDS|PDS",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "store|dry|flat|upright|off\\s*ground|cover|rack|avoid\\s*moisture|supported",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "material\\s*2|MDF|plywood|concrete|steel|aluminium|glass|plastic|composite|fibre\\s*cement|plasterboard",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "made\\s*of|cement|aggregate|fibres?|resin|layers?|veneers?|metal\\s*alloy|polymer|gypsum|cellulose",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "strength|tensile|compressive|brittle|ductile|stiff|flex|durable|waterproof|corrode",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "use(d)?\\s*for|structural|lining|cladding|framing|reinforcement|panels?|flooring|furniture|roofing",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "PPE|gloves|mask|eye\\s*protection|hearing\\s*protection|ventilat|dust|SDS|PDS",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "store|dry|flat|upright|off\\s*ground|cover|rack|avoid\\s*moisture|supported",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "material\\s*3|MDF|plywood|concrete|steel|aluminium|glass|plastic|composite|fibre\\s*cement|plasterboard",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "made\\s*of|cement|aggregate|fibres?|resin|layers?|veneers?|metal\\s*alloy|polymer|gypsum|cellulose",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "strength|tensile|compressive|brittle|ductile|stiff|flex|durable|waterproof|corrode",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "use(d)?\\s*for|structural|lining|cladding|framing|reinforcement|panels?|flooring|furniture|roofing",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "PPE|gloves|mask|eye\\s*protection|hearing\\s*protection|ventilat|dust|SDS|PDS",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "store|dry|flat|upright|off\\s*ground|cover|rack|avoid\\s*moisture|supported",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "CHANGELOG": [
+    "Updated all hints to include real student booklet page numbers (Timber + Materials L2 STUDENT 24360).",
+    "Hints remain guidance-only (where to look) and do not provide direct answers.",
+    "Maintained maxPoints exactly as stated in each question while allowing rubrics to accept a wider range of correct examples."
+  ]
+}
