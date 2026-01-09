@@ -1070,6 +1070,7 @@
     {
       "id": "24360-knowledge",
       "title": "Knowledge Assessment – 24360 (v3)",
+      "attachSignoff": true,
       "subtitle": "Demonstrate knowledge of timber and other construction materials used in BCATS projects",
       "usNumber": "24360",
       "usVersion": "v3",
