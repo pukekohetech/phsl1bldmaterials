@@ -1,7 +1,7 @@
 {
-  "APP_ID": "Knowledge Assessment - US 25920 (v3) Use joints for a BCATS project",
+  "APP_ID": "Knowledge Assessment - US 24360 (v3) Demonstrate knowledge of timber and other construction materials used in BCATS projects",
   "VERSION": "2026",
-  "APP_TITLE": "US 25920 (v3) Use joints for a BCATS project",
+  "APP_TITLE": "US 24360 (v3) Timber and construction materials",
   "APP_SUBTITLE": "Knowledge Assessment - Short Answer Friendly (no giveaways)",
   "DEADLINE": {
     "day": 30,
@@ -27,246 +27,238 @@
   ],
   "ASSESSMENTS": [
     {
-      "id": "US 25920 (v3) - Knowledge Quiz",
-      "title": "US 25920 v3 Knowledge Assessment",
+      "id": "US 24360 (v3) - Knowledge Quiz",
+      "title": "US 24360 v3 Knowledge Assessment",
       "attachSignoff": true,
-      "subtitle": "Use joints for a BCATS project",
-      "usNumber": "US 25920",
+      "subtitle": "Demonstrate knowledge of timber and other construction materials used in BCATS projects",
+      "usNumber": "US 24360",
       "usVersion": "3",
-      "credits": 3,
+      "credits": 4,
       "standardType": "internal",
       "questions": [
         {
-          "id": "q1_timber_two_checks",
-          "text": "1.\tWhat are two checks you can make on timber you have selected for a project?",
-          "image": "wooddefects.png",
-          "hint": "Look in the Wood joints section about selecting and preparing timber (around page 7). Give TWO different checks.",
-          "type": "long",
-          "maxPoints": 2,
-          "rubric": [
-            {
-              "points": 1,
-              "check": "\\b(straight|flat|true|square|no\\s*twist|twist|wind|bow|bowed|cup|cupped|warp|warped|crook|crooked|bent|curve|curved)\\b",
-              "flags": "i"
-            },
-            {
-              "points": 1,
-              "check": "\\b(defect|defects|blemish|blemishes|knot|knots|crack|cracks|split|splits|stain|stains|damage|mark|marks|grain|pattern|figure|colour|color|appearance|seen|visible|best\\s*side|long\\s*enough|length)\\b",
-              "flags": "i"
-            }
-          ]
-        },
-        {
-          "id": "q2_mitre_joint_angle",
-          "text": "2.\tWhat is the name of the joint used to join mouldings around a rectangular doorway and what is the angle of the cut?",
-          "image": "miter.png",
-          "hint": "Look at Mitre joints (pages 8–9 area). You need the JOINT NAME and the CUT ANGLE.",
-          "type": "short",
-          "maxPoints": 3,
-          "rubric": [
-            {
-              "points": 1,
-              "check": "\\b(mitre|miter)\\b",
-              "flags": "i"
-            },
-            {
-              "points": 1,
-              "check": "\\b(45|forty\\s*five)\\b",
-              "flags": "i"
-            },
-            {
-              "points": 1,
-              "check": "\\b(deg|degree|degrees|°)\\b",
-              "flags": "i"
-            }
-          ]
-        },
-        {
-          "id": "q3_lap_dovetail_two_reasons",
-          "text": "3.\tGive two reasons why lap dovetail joints are used for drawer fronts.",
-          "image": "dovetails.jpg",
-          "hint": "Look at Dovetail joints / Lap dovetail (page 9 area). Give TWO reasons (can be short phrases).",
-          "type": "long",
-          "maxPoints": 2,
-          "rubric": [
-            {
-              "points": 1,
-              "check": "\\b(strong|strength|cannot\\s*pull\\s*apart|can'?t\\s*pull\\s*apart|won'?t\\s*pull\\s*apart|resist|prevents|prevent|hold|holding|lock|locking|tight|tension|durable|hard\\s*wearing|long\\s*lasting|repeat|repeated|pulling|drawer\\s*front|front\\s*from\\s*coming\\s*away|come\\s*away)\\b",
-              "flags": "i"
-            },
-            {
-              "points": 1,
-              "check": "\\b(hidden|hide|hides|conceal|concealed|not\\s*visible|invisible|not\\s*seen|clean\\s*front|neat|tidy|better\\s*finish|good\\s*finish|looks\\s*good|nice\\s*front|front\\s*looks|appearance)\\b",
-              "flags": "i"
-            }
-          ]
-        },
-        {
-          "id": "q4_stopped_housing",
-          "text": "4.\tWhat is the name of the housing joint where the trench does not extend right across the face of the vertical board?",
-          "image": "SHousing.png",
-          "hint": "Look at Housing joints (page 10 area). It’s the housing where the trench stops short of the front face.",
-          "type": "short",
-          "maxPoints": 1,
-          "rubric": [
-            {
-              "points": 1,
-              "check": "\\b(stopped\\s*housing|stop\\s*housing)\\b",
-              "flags": "i"
-            }
-          ]
-        },
-        {
-          "id": "q5_mortise_tenon_specific_a",
-          "text": "5.\tWhat are the specific names of the following mortise and tenon joints? \n\ta)  Stops a rail from twisting\t\n\t\t",
+          "id": "q1_define_timber_types",
+          "text": "1.\tDescribe these types of timber: Indigenous, Exotic, Imported.",
           "image": "blank.jpg",
-          "hint": "Look at Mortise and tenon joints (page 11). Match each description to the correct joint name.",
+          "hint": "Write a short definition for each term (1–2 lines each).",
           "type": "long",
-          "maxPoints": 1,
-          "rubric": [
-            {
-              "points": 1,
-              "check": "\\b(haunch|haunched|haunching)\\b",
-              "flags": "i"
-            }
-          ]
-        },
-        {
-          "id": "q5_mortise_tenon_specific_names_b",
-          "text": "5.\tWhat are the specific names of the following mortise and tenon joints? \n\tb)  Does not penetrate right through the stile\t\n\t",
-          "image": "blank.jpg",
-          "hint": "Look at Mortise and tenon joints (page 11). Match each description to the correct joint name.",
-          "type": "long",
-          "maxPoints": 1,
-          "rubric": [
-            {
-              "points": 1,
-              "check": "\\b(stub|stopped|blind)\\b",
-              "flags": "i"
-            }
-          ]
-        },
-        {
-          "id": "q5_mortise_tenon_specific_names_c",
-          "text": "5.\tWhat are the specific names of the following mortise and tenon joints? \n\tc)  Passes all the way through the stile\t",
-          "image": "blank.jpg",
-          "hint": "Look at Mortise and tenon joints (page 11). Match each description to the correct joint name.",
-          "type": "long",
-          "maxPoints": 1,
-          "rubric": [
-            {
-              "points": 1,
-              "check": "\\b(through)\\b",
-              "flags": "i"
-            }
-          ]
-        },
-        {
-          "id": "q6_dowel_accuracy",
-          "text": "6.\tWhy is it necessary to be accurate when setting out a dowel joint?",
-          "image": "Dowel.png",
-          "hint": "Look at Dowelled joints (page 14). Think: what accuracy helps happen during assembly.",
-          "type": "short",
-          "maxPoints": 2,
-          "rubric": [
-            {
-              "points": 1,
-              "check": "\\b(accurate|accuracy|accurately|precise|precision|exact|careful|correct)\\b",
-              "flags": "i"
-            },
-            {
-              "points": 1,
-              "check": "\\b(line\\s*up|lines\\s*up|align|alignment|match\\s*up|fit|fits|go\\s*together|square|straight|flush|no\\s*gaps?|gap\\s*free|perfectly)\\b",
-              "flags": "i"
-            }
-          ]
-        },
-        {
-          "id": "q7_biscuit_tool",
-          "text": "7.\tWhat is the name of the portable power tool used make a biscuit joint?",
-          "image": "biscuit.png",
-          "hint": "Look at Biscuit joints (page 15). It has two common names.",
-          "type": "short",
-          "maxPoints": 1,
-          "rubric": [
-            {
-              "points": 1,
-              "check": "\\b(biscuit\\s*(joiner|jointer|cutter)|plate\\s*joiner)\\b",
-              "flags": "i"
-            }
-          ]
-        },
-        {
-          "id": "q8_three_welded_joints",
-          "text": "8.\tName three of the five basic welded joints.\n\n1.\n2.\n3.\n4.\n5.",
-          "image": "blank.jpg",
-          "hint": "Look at Welding (page 16). Write ANY THREE joint names from the list.",
-          "type": "short",
-          "maxPoints": 3,
-          "rubric": [
-            {
-              "points": 1,
-              "check": "\\b(butt\\s*joint|butt)\\b",
-              "flags": "i"
-            },
-            {
-              "points": 1,
-              "check": "\\b(corner\\s*joint|corner)\\b",
-              "flags": "i"
-            },
-            {
-              "points": 1,
-              "check": "\\b(tee\\s*joint|t\\s*-?\\s*joint|t\\s*joint|tee)\\b",
-              "flags": "i"
-            },
-            {
-              "points": 1,
-              "check": "\\b(lap\\s*joint|lap)\\b",
-              "flags": "i"
-            },
-            {
-              "points": 1,
-              "check": "\\b(edge\\s*joint|edge)\\b",
-              "flags": "i"
-            }
-          ]
-        },
-        {
-          "id": "q9_two_gases",
-          "text": "9.\tWhat are the two most common gases used in gas welding?\n\n1.\n2.",
-          "image": "blank.jpg",
-          "hint": "Look at Gas welding (page 17) and the glossary (page 6). You need TWO gas names.",
-          "type": "short",
-          "maxPoints": 2,
+          "maxPoints": 6,
           "rubric": [
             {
               "points": 2,
-              "check": "(?=.*\\b(oxygen|oxy)\\b)(?=.*\\b(acetylene|acetalene|acetalyne)\\b).*",
+              "check": "\\b(indigenous|native)\\b.*\\b(new\\s*zealand|nz|aotearoa)\\b|\\bnew\\s*zealand\\b.*\\b(native|indigenous)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 2,
+              "check": "\\b(exotic)\\b.*\\b(not\\s*(native|indigenous)|from\\s*overseas|introduced)\\b.*\\b(grown|planted|plantation)\\b|\\bgrown\\b.*\\bnz\\b.*\\b(exotic|introduced)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 2,
+              "check": "\\b(imported)\\b.*\\b(overseas|foreign|another\\s*country|brought\\s*in)\\b",
               "flags": "i"
             }
           ]
         },
         {
-          "id": "q10_key_quality_project",
-          "text": "10.\tWhat is the key to producing a quality project?",
+          "id": "q2_softwood_vs_hardwood",
+          "text": "2.\tExplain the difference between hardwood and softwood (include one feature of each).",
           "image": "blank.jpg",
-          "hint": "Look in the Wood joints intro about what matters most before making joints (page 7 area). A short sentence is fine.",
+          "hint": "Think about leaf type (deciduous/evergreen), density/strength, and typical uses.",
+          "type": "long",
+          "maxPoints": 4,
+          "rubric": [
+            {
+              "points": 2,
+              "check": "\\b(hardwood)\\b.*\\b(broadleaf|deciduous|denser|dense|stronger|strong|heavier|harder)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 2,
+              "check": "\\b(softwood)\\b.*\\b(cone|conifer|evergreen|needle|lighter|soft|less\\s*dense|weaker)\\b",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "q3_tree_timber_type_match",
+          "text": "3.\tState whether each timber is a hardwood or softwood: Radiata pine, Rimu, Kauri, Totara, Douglas fir.",
+          "image": "blank.jpg",
+          "hint": "Write each name and then 'hardwood' or 'softwood'.",
+          "type": "long",
+          "maxPoints": 5,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "\\b(radiata)\\b.*\\bsoftwood\\b|\\bsoftwood\\b.*\\b(radiata)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\b(rimu)\\b.*\\bhardwood\\b|\\bhardwood\\b.*\\b(rimu)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\b(kauri)\\b.*\\bhardwood\\b|\\bhardwood\\b.*\\b(kauri)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\b(totara|tōtara)\\b.*\\bhardwood\\b|\\bhardwood\\b.*\\b(totara|tōtara)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\b(douglas\\s*fir|douglasfir|douglas\\s*pine|oregon)\\b.*\\bsoftwood\\b|\\bsoftwood\\b.*\\b(douglas\\s*fir|oregon)\\b",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "q4_log_parts",
+          "text": "4.\tName the following parts of a log: Growth rings, Bark, Cambium, Sapwood, Heartwood.",
+          "image": "logparts.png",
+          "hint": "Label each part correctly (can be written as a list).",
+          "type": "long",
+          "maxPoints": 5,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "\\bgrowth\\s*rings?\\b|\\brings?\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\bbark\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\bcambium\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\bsapwood\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\bheart\\s*wood\\b|\\bheartwood\\b",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "q5_knot_effects",
+          "text": "5.\tA large knot runs through the face of a board. Give TWO effects on working or structural quality.",
+          "image": "wooddefects.png",
+          "hint": "One can be structural (strength). One can be working/finishing (machining/appearance).",
           "type": "long",
           "maxPoints": 2,
           "rubric": [
-           {
-  "points": 1,
-  "check": "\\b(preparation|prepare|prepared|prep|planning|plan|working\\s*to\\s*(a\\s*)?drawing|working\\s*to\\s*plan|material\\s*selection|selecting\\s*(the\\s*)?right\\s*material|timber\\s*selection|stock\\s*selection|checking\\s*materials?|check\\s*for\\s*defects|defects?|knots?|cracks?|splits?|material\\s*prep|timber\\s*prep)\\b",
-  "flags": "i"
-},
-{
-  "points": 1,
-  "check": "\\b(accurate|accuracy|accurately|precision|precise|measure|measuring|measurement|double\\s*check|checking\\s*measurements?|working\\s*within\\s*tolerance|tolerance|square|straight|true|flat|90\\s*degrees|right\\s*angle|within\\s*spec|to\\s*spec)\\b",
-  "flags": "i"
-}
+            {
+              "points": 1,
+              "check": "\\b(weak|weaken|strength|structural|load\\s*bearing|failure|crack|split|break|tension|compression)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\b(difficult|hard|machining|dress|finishing|sand|plane|tear\\s*out|uneven|appearance|ugly|mark|blemish)\\b",
+              "flags": "i"
+            }
           ]
-        }
-      ]
-    }
-  ]
-}
+        },
+        {
+          "id": "q6_identify_defects",
+          "text": "6.\tIdentify these defects: Bow, Split, Check, Knot.",
+          "image": "defects.png",
+          "hint": "Write the name of each defect shown.",
+          "type": "short",
+          "maxPoints": 4,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "\\bbow\\b|\\bbowing\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\bsplit\\b|\\bsplitting\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\bcheck\\b|\\bchecking\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\bknot\\b|\\bknots\\b",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "q7_signs_borer",
+          "text": "7a.\tWhat are TWO signs that timber is affected by borer?",
+          "image": "blank.jpg",
+          "hint": "Think: exit holes and dust/tunnels.",
+          "type": "long",
+          "maxPoints": 2,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "\\b(exit\\s*holes?|holes?)\\b|\\b(1\\s*to\\s*2\\s*mm|2\\s*x\\s*6\\s*mm|oval|round)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\b(frass|dust|powder|tunnel|tunnels|galleries|boring|larvae|grub)\\b",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "q8_signs_wet_rot",
+          "text": "7b.\tWhat are TWO signs that timber is affected by wet rot?",
+          "image": "blank.jpg",
+          "hint": "Think about colour change and softness.",
+          "type": "long",
+          "maxPoints": 2,
+          "rubric": [
+            {
+              "points": 1,
+              "check": "\\b(dark|darkening|grey|gray|discolour|discolor|stain)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 1,
+              "check": "\\b(soft|spongy|crumb|crumble|easily|carve|knife|punky|breaks\\s*up|weak)\\b",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "id": "q9_env_causes_deterioration",
+          "text": "8.\tGive FOUR environmental causes of timber deterioration and describe the effect of each.",
+          "image": "blank.jpg",
+          "hint": "Common ones: moisture, humidity, weather exposure, insects, ventilation.",
+          "type": "long",
+          "maxPoints": 8,
+          "rubric": [
+            {
+              "points": 2,
+              "check": "\\b(moisture|water|wet)\\b.*\\b(rot|fungus|decay|swell|swelling)\\b|\\b(rot|decay|fungus)\\b.*\\b(moisture|wet|water)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 2,
+              "check": "\\b(humidity|damp|condensation)\\b.*\\b(swell|movement|expand|shrink|stick|warp)\\b",
+              "flags": "i"
+            },
+            {
+              "points": 2,
+              "check": "\\b(weather|sun|rain|wind|uv|exposed)\\b.*\\b(crack|check|fade|split|surface)\\b",
